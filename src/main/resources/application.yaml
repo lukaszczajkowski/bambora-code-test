@@ -1,8 +1,7 @@
-spring:
-  datasource:
-    url: https://test.trustly.com/api/1
-    username: devcode
-    password: change_this_gef4D37ypL
-  config:
-     private-key: src/main/resources/keys/trustly_private_key.pem
-     public-key: src/main/resources/keys/trustly_public_key.pem
+
+trustly:
+  private-key: src/main/resources/keys/trustly_private_key.pem
+  public-key: src/main/resources/keys/trustly_public_key.pem
+  api-url: https://test.trustly.com/api/1
+  api-username: devcode
+  api-password: change_this_gef4D37ypL
