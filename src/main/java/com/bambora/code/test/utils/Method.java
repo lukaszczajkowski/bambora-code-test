@@ -4,7 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public enum Method {
     @SerializedName("Deposit")
-    DEPOSIT("Deposit");
+    DEPOSIT("Deposit"),
+    @SerializedName("ViewAutomaticSettlementDetailsCSV")
+    VIEW_AUTOMATIC_SETTLEMENT_DETAILS_CSV("ViewAutomaticSettlementDetailsCSV"),
+    @SerializedName("credit")
+    CREDIT("credit");
 
     private final String jsonName;
 
