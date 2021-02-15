@@ -10,6 +10,8 @@ import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
 import org.bouncycastle.util.io.pem.PemObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +27,12 @@ import java.security.PublicKey;
 @Configuration
 public class AppConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
+
     @Bean
-    public PrivateKey loadClientPrivateKey(@Value("spring.config.private-key") String privateKeyFilename,
-                                           @Value("spring.datasource.password") String password) throws KeyException {
+    public PrivateKey loadClientPrivateKey(@Value("${trustly.private-key}") String privateKeyFilename,
+                                           @Value("${trustly.api-password}") String password) throws KeyException {
+
         try {
             File privateKeyFile = new File(privateKeyFilename);
             PEMParser pemParser = new PEMParser(new FileReader(privateKeyFile));
@@ -46,7 +51,6 @@ public class AppConfig {
             }
 
             PrivateKey clientPrivateKey = kp.getPrivate();
-
             return clientPrivateKey;
         } catch (IOException e) {
             throw new KeyException("Could not load private key", e);
@@ -54,7 +58,7 @@ public class AppConfig {
     }
 
     @Bean
-    public PublicKey loadTrustlyPublicKey(@Value("spring.config.public-key") String publicKeyPath) {
+    public PublicKey loadTrustlyPublicKey(@Value("${trustly.public-key}") String publicKeyPath) {
         try {
             File file = new File(publicKeyPath);
             PEMParser pemParser = new PEMParser(new FileReader(file));

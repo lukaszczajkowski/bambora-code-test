@@ -1,0 +1,29 @@
+APIResult = TrustlyAPI({
+    "method": "Deposit",
+    "params": {
+        "Signature": "f4ThjuMqbsdG6u ... S16VbzD4h==",
+        "UUID": "258a2184-2842-b485-25ca-293525152425",
+deposit     "Data": {
+            "Username": "merchant_username",
+            "Password": "merchant_password",
+            "NotificationURL": "https://URL_to_your_notification_service",
+            "EndUserID": "12345",
+            "MessageID": "your_unique_deposit_id",
+            "Attributes": {
+                "Country": "SE",
+                "Locale": "sv_SE",
+                "Currency": "SEK",
+                "Amount": 123.50
+                "IP": "123.123.123.123",
+                "MobilePhone": "+46709876543",
+                "Firstname": "John",
+                "Lastname": "Doe",
+                "Email": "test@trustly.com",
+                "NationalIdentificationNumber": "790131-1234",
+                "SuccessURL":"https://yourpage.com/success",
+                "FailURL":"https://yourpage.com/fail"
+            }
+        }
+    },
+    "version": "1.1"
+});

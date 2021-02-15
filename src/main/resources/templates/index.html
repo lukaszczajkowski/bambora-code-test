@@ -1,10 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Index</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Hello!'" />
+<p th:text="'Enter the amount that you want to deposit and click OK'" />
+    <form th:action="@{/deposit}" method="post">
+    <input type="number" th:name="amount"/>
+    <input type="submit"/>
+</form>
 </body>
 </html>
