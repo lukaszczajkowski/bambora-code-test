@@ -57,4 +57,13 @@ public class Request {
     public String getUUID() {
         return params.getUUID();
     }
+
+    @Override
+    public String toString() {
+        return "Request{" +
+                "method=" + method +
+                ", params=" + params +
+                ", version=" + version +
+                '}';
+    }
 }

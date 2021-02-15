@@ -57,4 +57,13 @@ public class DepositData extends RequestData {
     public void setMessageID(final String messageID) {
         this.messageID = messageID;
     }
+
+    @Override
+    public String toString() {
+        return "DepositData{" +
+                "notificationURL='" + notificationURL + '\'' +
+                ", endUserID='" + endUserID + '\'' +
+                ", messageID='" + messageID + '\'' +
+                '}';
+    }
 }

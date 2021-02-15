@@ -51,6 +51,8 @@ public class SignedAPI {
 
         final String jsonResponse = newHttpPost(gson.toJson(request, Request.class));
 
+        System.out.println("jsonResponse: " + jsonResponse);
+
         return handleJsonResponse(jsonResponse, request.getUUID());
     }
 
@@ -85,6 +87,7 @@ public class SignedAPI {
         final Gson gson = new Gson();
         final Response response = gson.fromJson(responseJson, Response.class);
         verifyResponse(response, requestUUID);
+        System.out.println("handleJsonResponse" + response);
         return response;
     }
 

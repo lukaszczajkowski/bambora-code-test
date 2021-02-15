@@ -33,14 +33,15 @@ public class KeyChain {
     private PublicKey trustlyPublicKey;
 
     public KeyChain(@Value("${trustly.public-key}") String publicKeyPath,
-                    @Value("${trustly.private-key}") String merchantPrivateKeyPath) {
+                    @Value("${trustly.private-key}") String merchantPrivateKeyPath) throws KeyException {
         this.publicKeyPath = publicKeyPath;
         this.merchantPrivateKeyPath = merchantPrivateKeyPath;
         this.keyPassword = "";
         loadTrustlyPublicKey();
+        loadMerchantPrivateKey();
     }
 
-    void loadMerchantPrivateKey() throws KeyException {
+    public void loadMerchantPrivateKey() throws KeyException {
         try {
             final File privateKeyFile = new File(merchantPrivateKeyPath);
             final PEMParser pemParser = new PEMParser(new FileReader(privateKeyFile));
@@ -63,7 +64,7 @@ public class KeyChain {
         }
     }
 
-    private void loadTrustlyPublicKey() {
+    public void loadTrustlyPublicKey() {
         try {
             final File file = new File(publicKeyPath);
             final PEMParser pemParser = new PEMParser(new FileReader(file));

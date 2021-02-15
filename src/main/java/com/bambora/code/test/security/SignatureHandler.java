@@ -89,6 +89,8 @@ public class SignatureHandler {
 
         final String signedData = createSignature(plainText);
 
+        System.out.println("Signature: " + signedData);
+
         request.getParams().setSignature(signedData);
     }
 
