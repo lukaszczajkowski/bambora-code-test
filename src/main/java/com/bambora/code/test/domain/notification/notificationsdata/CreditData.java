@@ -65,4 +65,14 @@ public class CreditData extends NotificationData {
     public void setTimestamp(final String timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        return "CreditData{" +
+                "amount='" + amount + '\'' +
+                ", currency=" + currency +
+                ", endUserId='" + endUserId + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                '}';
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.sql.SQLOutput;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,6 +23,8 @@ public class DepositController {
     private final String username;
     private final String password;
     private final String notificationUrl;
+    private final String successUrl;
+    private final String failUrl;
 
     public DepositController(SignedAPI signedAPI,
                              @Value("${trustly.api-url}") String redirectUrl,
@@ -32,6 +35,8 @@ public class DepositController {
         this.username = username;
         this.password = password;
         this.notificationUrl = "https://localhost:8080/deposit/notifications/a2b63j23dj23883jhfhfh";
+        this.successUrl = "http://localhost:8080/deposit/success";
+        this.failUrl = "http://localhost:8080/deposit/failure";
     }
 
     @PostMapping
@@ -58,13 +63,16 @@ public class DepositController {
                 .locale("sv_SE")
                 .amount(amount)
                 .mobilePhone("070-1234567")
-                .nationalIdentificationNumber("891212-4545")
+                .nationalIdentificationNumber("400915-6094")
+                .successURL(successUrl)
+                .failURL(failUrl)
                 .getRequest();
     }
 
-    @GetMapping("/notifications/a2b63j23dj23883jhfhfh")
+    @PostMapping("/notifications/a2b63j23dj23883jhfhfh")
     public String postNotification(@RequestBody CreditData creditData) {
         System.out.println("Receiving notification...");
+        System.out.println("CreditData object: " + creditData.toString());
         return "notification here";
     }
 }
