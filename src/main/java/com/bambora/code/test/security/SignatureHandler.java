@@ -88,7 +88,6 @@ public class SignatureHandler {
         final String plainText = String.format("%s%s%s", requestMethod, uuid, serializeData(requestData));
 
         final String signedData = createSignature(plainText);
-
         request.getParams().setSignature(signedData);
     }
 

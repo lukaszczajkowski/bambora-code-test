@@ -4,6 +4,7 @@ import com.bambora.code.test.domain.request.Request;
 import com.bambora.code.test.domain.response.Response;
 import com.bambora.code.test.requestbuilders.Deposit;
 import com.bambora.code.test.security.NotificationHandler;
+import com.bambora.code.test.domain.notification.notificationsdata.CreditData;
 import com.bambora.code.test.security.SignedAPI;
 import com.bambora.code.test.utils.Currency;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,7 +64,6 @@ public class DepositController {
     public String failure() {
         return "failure";
     }
-
 
     private Request buildDeposit(String amount) {
         return new Deposit.Build(notificationUrl, "user@email.com", signedAPI.newMessageID(), Currency.SEK, "Steve", "Smith", "steve@smith.com")
