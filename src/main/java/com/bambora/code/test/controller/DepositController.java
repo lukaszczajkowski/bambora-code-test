@@ -39,9 +39,9 @@ public class DepositController {
         this.redirectUrl = redirectUrl;
         this.username = username;
         this.password = password;
-        this.notificationUrl = "https://localhost:8080/notifications/a2b63j23dj23883jhfhfh";
-        this.successUrl = "https://localhost:8080/deposit/success";
-        this.failUrl = "https://localhost:8080/deposit/failure";
+        this.notificationUrl = "https://bambora-code-test-lc.herokuapp.com/notifications/a2b63j23dj23883jhfhfh";
+        this.successUrl = "http://bambora-code-test-lc.herokuapp.com/deposit/success";
+        this.failUrl = "http://bambora-code-test-lc.herokuapp.com/deposit/failure";
     }
 
     @PostMapping
