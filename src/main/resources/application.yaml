@@ -1,7 +1,11 @@
-
 trustly:
   private-key: src/main/resources/keys/trustly_private_key.pem
   public-key: src/main/resources/keys/trustly_public_key.pem
   api-url: https://test.trustly.com/api/1
   api-username: devcode
   api-password: change_this_gef4D37ypL
+server:
+  ssl:
+    key-store: src/main/resources/keys/ebininfosoft-ssl-key.p12
+    key-store-password: Zjaf8u8o.
+    key-store-type: PKCS12

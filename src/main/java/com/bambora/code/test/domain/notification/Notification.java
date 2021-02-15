@@ -59,4 +59,13 @@ public class Notification {
     public String getUUID() {
         return params.getUUID();
     }
+
+    @Override
+    public String toString() {
+        return "Notification{" +
+                "method=" + method +
+                ", params=" + params +
+                ", version=" + version +
+                '}';
+    }
 }

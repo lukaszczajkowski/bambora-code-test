@@ -88,9 +88,6 @@ public class SignatureHandler {
         final String plainText = String.format("%s%s%s", requestMethod, uuid, serializeData(requestData));
 
         final String signedData = createSignature(plainText);
-
-        System.out.println("Signature: " + signedData);
-
         request.getParams().setSignature(signedData);
     }
 
@@ -181,7 +178,7 @@ public class SignatureHandler {
     private String serializeObject(final Object object) {
         final StringBuilder builder = new StringBuilder();
 
-        if (object instanceof TreeMap || object instanceof LinkedTreeMap) {
+        if (object instanceof TreeMap || object instanceof LinkedTreeMap || object instanceof HashMap) {
             populateStringBuilder(builder, (Map) object);
         } else if (object instanceof ArrayList) {
             for (final Object mapEntry : (ArrayList) object) {
