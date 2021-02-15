@@ -20,10 +20,9 @@ public class NotificationController {
     public NotificationController(NotificationHandler notificationHandler) {
         this.notificationHandler = notificationHandler;
     }
-
+  
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public String postNotification(@RequestBody String incomingNotification) {
-
         Notification notification =
                 notificationHandler.handleNotification(incomingNotification);
 
