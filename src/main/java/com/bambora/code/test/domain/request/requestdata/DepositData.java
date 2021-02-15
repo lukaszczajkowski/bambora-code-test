@@ -21,49 +21,49 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.bambora.code.test.domain.request;
+package com.bambora.code.test.domain.request.requestdata;
 
-import com.bambora.code.test.utils.Method;
+import com.bambora.code.test.domain.request.RequestData;
+import com.google.gson.annotations.SerializedName;
 
-public class Request {
-    private Method method;
-    private RequestParameters params;
-    private double version = 1.1;
+public class DepositData extends RequestData {
+    @SerializedName("NotificationURL")
+    private String notificationURL;
+    @SerializedName("EndUserID")
+    private String endUserID;
+    @SerializedName("MessageID")
+    private String messageID;
 
-    public double getVersion() {
-        return version;
+    public String getNotificationURL() {
+        return notificationURL;
     }
 
-    public void setVersion(final double version) {
-        this.version = version;
+    public void setNotificationURL(final String notificationURL) {
+        this.notificationURL = notificationURL;
     }
 
-    public Method getMethod() {
-        return method;
+    public String getEndUserID() {
+        return endUserID;
     }
 
-    public void setMethod(final Method method) {
-        this.method = method;
+    public void setEndUserID(final String endUserID) {
+        this.endUserID = endUserID;
     }
 
-    public RequestParameters getParams() {
-        return params;
+    public String getMessageID() {
+        return messageID;
     }
 
-    public void setParams(final RequestParameters params) {
-        this.params = params;
-    }
-
-    public String getUUID() {
-        return params.getUUID();
+    public void setMessageID(final String messageID) {
+        this.messageID = messageID;
     }
 
     @Override
     public String toString() {
-        return "Request{" +
-                "method=" + method +
-                ", params=" + params +
-                ", version=" + version +
+        return "DepositData{" +
+                "notificationURL='" + notificationURL + '\'' +
+                ", endUserID='" + endUserID + '\'' +
+                ", messageID='" + messageID + '\'' +
                 '}';
     }
 }
