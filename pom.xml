@@ -41,13 +41,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.norberg</groupId>
-            <artifactId>auto-matter</artifactId>
-            <version>0.16.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>

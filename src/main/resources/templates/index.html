@@ -6,9 +6,9 @@
 </head>
 <body>
 <p th:text="'Enter the amount that you want to deposit and click OK'" />
-    <form action="http://localhost:8080/deposit" method="POST">
-        <input id = "userAmount" type="number" name="amount" value=""><br>
-        <button>OK</button>
-    </form>
+    <form th:action="@{/deposit}" method="post">
+    <input type="number" th:name="amount"/>
+    <input type="submit"/>
+</form>
 </body>
 </html>
