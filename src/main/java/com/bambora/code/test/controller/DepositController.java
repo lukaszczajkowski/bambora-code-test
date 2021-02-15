@@ -40,8 +40,8 @@ public class DepositController {
         this.username = username;
         this.password = password;
         this.notificationUrl = "https://localhost:8080/notifications/a2b63j23dj23883jhfhfh";
-        this.successUrl = "https://localhost:8080/deposit/success";
-        this.failUrl = "https://localhost:8080/deposit/failure";
+        this.successUrl = "http://localhost:8080/deposit/success";
+        this.failUrl = "http://localhost:8080/deposit/failure";
     }
 
     @PostMapping
