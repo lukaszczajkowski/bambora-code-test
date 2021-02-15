@@ -21,8 +21,7 @@ public class NotificationController {
     }
 
     @PostMapping
-    public String postNotification(@RequestBody String incomingNotification, Model model) {
-        System.out.println(incomingNotification);
+    public String postNotification(@RequestBody String incomingNotification) {
 
         Notification notification =
                 notificationHandler.handleNotification(incomingNotification);
@@ -33,7 +32,6 @@ public class NotificationController {
                         ResponseStatus.OK);
 
         String responseJson = notificationHandler.toJson(notificationResponse);
-        model.addAttribute("responseJson", responseJson);
-        return "response";
+        return responseJson;
     }
 }
