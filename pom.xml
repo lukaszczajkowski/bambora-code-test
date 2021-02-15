@@ -14,7 +14,7 @@
     <name>test</name>
     <description>Spring application - code test</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
     <dependencies>
         <dependency>
