@@ -40,6 +40,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.util.*;
 
@@ -111,11 +112,11 @@ public class SignatureHandler {
         try {
             final Signature signatureInstance = Signature.getInstance("SHA1withRSA");
             signatureInstance.initSign(keyChain.getMerchantPrivateKey());
-            signatureInstance.update(plainText.getBytes("UTF-8"));
+            signatureInstance.update(plainText.getBytes(StandardCharsets.UTF_8));
 
             final byte[] signature = signatureInstance.sign();
             return base64Encoder.encodeToString(signature);
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new TrustlySignatureException(e);
         } catch (final InvalidKeyException e) {
             throw new TrustlySignatureException("Invalid private key", e);
@@ -282,10 +283,8 @@ public class SignatureHandler {
             final Signature signatureInstance = Signature.getInstance("SHA1withRSA");
             signatureInstance.initVerify(keyChain.getTrustlyPublicKey());
             final String expectedPlainText = String.format("%s%s%s", method, uuid, serializedData);
-            signatureInstance.update(expectedPlainText.getBytes("UTF-8"));
+            signatureInstance.update(expectedPlainText.getBytes(StandardCharsets.UTF_8));
             return signatureInstance.verify(signature);
-        } catch (final IOException e) {
-            throw new TrustlySignatureException("Failed to decode signature", e);
         } catch (final NoSuchAlgorithmException e) {
             throw new TrustlySignatureException(e);
         } catch (final InvalidKeyException e) {

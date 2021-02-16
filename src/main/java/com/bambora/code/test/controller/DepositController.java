@@ -4,7 +4,6 @@ import com.bambora.code.test.domain.request.Request;
 import com.bambora.code.test.domain.response.Response;
 import com.bambora.code.test.requestbuilders.Deposit;
 import com.bambora.code.test.security.NotificationHandler;
-import com.bambora.code.test.domain.notification.notificationsdata.CreditData;
 import com.bambora.code.test.security.SignedAPI;
 import com.bambora.code.test.utils.Currency;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +19,6 @@ import java.util.Map;
 @RequestMapping("/deposit")
 public class DepositController {
 
-    private final NotificationHandler notificationHandler;
     private final SignedAPI signedAPI;
     private final String redirectUrl;
     private final String username;
@@ -33,15 +31,17 @@ public class DepositController {
                              NotificationHandler notificationHandler,
                              @Value("${trustly.api-url}") String redirectUrl,
                              @Value("${trustly.api-username}") String username,
-                             @Value("${trustly.api-password}") String password) {
+                             @Value("${trustly.api-password}") String password,
+                             @Value("${trustly.notification-url}") String notificationUrl,
+                             @Value("${trustly.success-url}") String successUrl,
+                             @Value("${trustly.fail-url}") String failUrl) {
         this.signedAPI = signedAPI;
-        this.notificationHandler = notificationHandler;
         this.redirectUrl = redirectUrl;
         this.username = username;
         this.password = password;
-        this.notificationUrl = "https://bambora-code-test-lc.herokuapp.com/notifications/a2b63j23dj23883jhfhfh";
-        this.successUrl = "http://bambora-code-test-lc.herokuapp.com/deposit/success";
-        this.failUrl = "http://bambora-code-test-lc.herokuapp.com/deposit/failure";
+        this.notificationUrl = notificationUrl;
+        this.successUrl = successUrl;
+        this.failUrl = failUrl;
     }
 
     @PostMapping
