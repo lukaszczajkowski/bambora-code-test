@@ -22,7 +22,8 @@ public class NotificationController {
     }
   
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postNotification(@RequestBody String incomingNotification) {
+    public ResponseEntity postNotification(@RequestBody String incomingNotification) {
+
         Notification notification =
                 notificationHandler.handleNotification(incomingNotification);
 
@@ -32,6 +33,6 @@ public class NotificationController {
                         ResponseStatus.OK);
 
         String responseJson = notificationHandler.toJson(notificationResponse);
-        return responseJson;
+        return ResponseEntity.ok(responseJson);
     }
 }
