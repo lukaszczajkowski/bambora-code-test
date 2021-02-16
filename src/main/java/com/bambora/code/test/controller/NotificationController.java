@@ -5,8 +5,8 @@ import com.bambora.code.test.domain.response.Response;
 import com.bambora.code.test.security.NotificationHandler;
 import com.bambora.code.test.utils.ResponseStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +20,9 @@ public class NotificationController {
     public NotificationController(NotificationHandler notificationHandler) {
         this.notificationHandler = notificationHandler;
     }
-
+  
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity postNotification(@RequestBody String incomingNotification) {
-
         Notification notification =
                 notificationHandler.handleNotification(incomingNotification);
 
