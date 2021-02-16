@@ -7,3 +7,4 @@ trustly:
   notification-url: https://bambora-code-test-lc.herokuapp.com/notifications/a2b63j23dj23883jhfhfh
   success-url: http://bambora-code-test-lc.herokuapp.com/deposit/success
   fail-url: http://bambora-code-test-lc.herokuapp.com/deposit/failure
+

@@ -6,7 +6,7 @@
 </head>
 <body>
 <p th:text="'Enter the amount that you want to deposit and click OK'" />
-    <form th:action="@{/deposit}" method="post">
+<form th:action="@{/deposit}" method="post">
     <input type="number" th:name="amount"/>
     <input type="submit"/>
 </form>
