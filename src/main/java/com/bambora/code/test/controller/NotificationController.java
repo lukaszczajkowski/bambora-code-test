@@ -23,7 +23,6 @@ public class NotificationController {
   
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity postNotification(@RequestBody String incomingNotification) {
-
         Notification notification =
                 notificationHandler.handleNotification(incomingNotification);
 
