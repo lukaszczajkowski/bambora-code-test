@@ -3,7 +3,6 @@ package com.bambora.code.test.controller;
 import com.bambora.code.test.domain.request.Request;
 import com.bambora.code.test.domain.response.Response;
 import com.bambora.code.test.requestbuilders.Deposit;
-import com.bambora.code.test.security.NotificationHandler;
 import com.bambora.code.test.security.SignedAPI;
 import com.bambora.code.test.utils.Currency;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,25 +19,15 @@ import java.util.Map;
 public class DepositController {
 
     private final SignedAPI signedAPI;
-    private final String redirectUrl;
-    private final String username;
-    private final String password;
     private final String notificationUrl;
     private final String successUrl;
     private final String failUrl;
 
     public DepositController(SignedAPI signedAPI,
-                             NotificationHandler notificationHandler,
-                             @Value("${trustly.api-url}") String redirectUrl,
-                             @Value("${trustly.api-username}") String username,
-                             @Value("${trustly.api-password}") String password,
                              @Value("${trustly.notification-url}") String notificationUrl,
                              @Value("${trustly.success-url}") String successUrl,
                              @Value("${trustly.fail-url}") String failUrl) {
         this.signedAPI = signedAPI;
-        this.redirectUrl = redirectUrl;
-        this.username = username;
-        this.password = password;
         this.notificationUrl = notificationUrl;
         this.successUrl = successUrl;
         this.failUrl = failUrl;
